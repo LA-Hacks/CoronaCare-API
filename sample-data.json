@@ -1,8 +1,8 @@
-// Respirators: N95, N99, N100, FFP2, FFP3, KN95, P2, DS, Homemade
+// Respirators: N95, N99, N100, FFP2, FFP3, KN95, P2, Homemade
 // Masks: ASTM Level 3
-// Gown: NFPA1999, EN 13795, EN14126
-// Glove: LYY, LYZ, LZA, LZB, LZC, KGO
-// Sanitization: List Ingredients
+// Gowns: NFPA1999, EN 13795, EN14126
+// Gloves: LYY, LYZ, LZA, LZB, LZC, KGO
+// Sanitization: 60eth, 70ipa
 {
     "hospitals": [
         {
@@ -20,14 +20,13 @@
         {
             "resource_name": "Respirators",
             "standard": [
-                "N95",
-                "Homemade"
+                "N95"
             ]
         },
         {
-            "resource_name": "gowns",
+            "resource_name": "Gowns",
             "standard": [
-                "PPE"
+                "NFPA1999"
             ]
         }
     ]
@@ -42,21 +41,21 @@
     ],
     "providers": [
         {
-            "name": "Arsalan Patel  ",
+            "name": "Arsalan Patel",
             "location": "San Ramon, CA"
         }
     ],
     "resources": [
         {
-            "resource_name": "masks",
+            "resource_name": "Masks",
             "standard": [
                 "Level 3 Surgical"
             ]
         },
         {
-            "resource_name": "gounds",
+            "resource_name": "Gowns",
             "standard": [
-                "PPE"
+                "NFPA1999"
             ]
         }
     ]
@@ -65,28 +64,44 @@
 {
     "hospitals": [
         {
-            "name": "Ronald Reagon",
+            "name": "UCLA Medical Center",
             "location": "Los Angeles, CA"
         }
     ],
     "providers": [
         {
-            "name": "Ford Inc.",
-            "location": "Detroit, MI"
+            "name": "3M Science",
+            "location": "Maplewood, MN"
         }
     ],
     "resources": [
         {
-            "resource_name": "masks",
+            "resource_name": "Gloves",
             "standard": [
-                "N-95",
-                "Homemade"
+                "LYY, LYZ"
             ]
-        },
+        }
+    ]
+}
+
+{
+    "hospitals": [
         {
-            "resource_name": "gounds",
+            "name": "Cedars-Sinai Medical Center",
+            "location": "Los Angeles, CA"
+        }
+    ],
+    "providers": [
+        {
+            "name": "Thermo-Fisher Scientific",
+            "location": "Pleasanton, CA"
+        }
+    ],
+    "resources": [
+        {
+            "resource_name": "Gloves",
             "standard": [
-                "PPE"
+                "LYY, LYZ"
             ]
         }
     ]
