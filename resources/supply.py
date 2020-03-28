@@ -1,5 +1,3 @@
-import traceback
-
 from flask_restful import Resource, reqparse
 from bson import json_util
 from bson.objectid import ObjectId
@@ -40,7 +38,6 @@ class ResourceSupplyRegister(Resource):
             provider = mongo.db.providers.find_one(
                 {"_id": ObjectId(user['provider_id'])})
         except:
-            traceback.print_exc()
             return {"message": "There was an error looking up the provider"}, 500
 
         # check to see if there is a pending supply for that resource
@@ -48,7 +45,6 @@ class ResourceSupplyRegister(Resource):
             supply = mongo.db.supplies.find_one(
                 {"resource_id": data['resource_id'], "provider_id": str(provider['_id'])})
         except:
-            traceback.print_exc()
             return {"message": "There was an error looking up the resource"}, 500
 
         if supply:
