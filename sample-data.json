@@ -136,3 +136,96 @@
         }
     ]
 }
+
+{
+    "hospitals": [
+        {
+            "name": "Huntington Memorial Hospital",
+            "location": "Los Angeles, CA"
+        }
+    ],
+    "providers": [
+        {
+            "name": "Ruv Raddle",
+            "location": "Burlington, CA"
+        }
+    ],
+    "resources": [
+        {
+            "resource_name": "Masks",
+            "standard": [
+                "ASTM Level 3"
+            ]
+        }
+    ]
+}
+
+{
+    "hospitals": [
+        {
+            "name": "UCI Medical Center",
+            "location": "Orange, CA"
+        }
+    ],
+    "providers": [
+        {
+            "name": "Stanley Yelnats",
+            "location": "Seattle, WA"
+        }
+    ],
+    "resources": [
+        {
+            "resource_name": "Respirators",
+            "standard": [
+                "N95",
+                "N99"
+            ]
+        }
+    ]
+}
+
+{
+    "hospitals": [
+        {
+            "name": "Torrance Memorial Medical Center",
+            "location": "Los Angeles, CA"
+        }
+    ],
+    "providers": [
+        {
+            "name": "Purell",
+            "location": "Akron, OH"
+        }
+    ],
+    "resources": [
+        {
+            "resource_name": "Sanitizer",
+            "standard": [
+                "60eth"
+            ]
+        }
+    ]
+}
+
+{
+    "hospitals": [
+        {
+            "name": "Mission Hospital",
+            "location": "Los Angeles, CA"
+        }
+    ],
+    "providers": [
+        {
+            "name": "Tracy Sminto",
+            "location": "Santa Fe, NM"
+        }
+    ],
+    "resources": [
+        {
+            "resource_name": "Sanitizer",
+            "standard": [
+                "70ipa"
+            ]
+        }
+    ]
+}
