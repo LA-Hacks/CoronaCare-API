@@ -11,19 +11,71 @@ from flask_jwt_extended import (
 from db import mongo
 
 
+_provider_parser = reqparse.RequestParser()
+_provider_parser.add_argument(
+    "name", type=str, required=True, help="This field cannot be blank."
+)
+_provider_parser.add_argument(
+    "location", type=str, required=True, help="This field cannot be blank."
+)
+
+
 class ProviderRegister(Resource):
     def post(self):
-        pass
+        data = _provider_parser.parse_args()
+
+        try:
+            provider = mongo.db.providers.find_one(
+                {"name": data["name"]})
+        except:
+            return {"message": "An error occurred looking up the provider"}, 500
+
+        if provider:
+            return {"message": "A provider with that username already exists"}, 400
+
+        try:
+            mongo.db.providers.insert_one(
+                {"name": data["name"], "location": data["location"]}
+            )
+
+            return {"message": "provider created successfully."}, 201
+        except:
+            return {"message": "An error occurred creating the provider"}, 500
 
 
 class Provider(Resource):
-    def get(self, id):
-        pass
+    def get(self, _id):
+        try:
+            provider = mongo.db.providers.find_one({"_id": ObjectId(_id)})
+        except:
+            return {"message": "An error occurred looking up the provider"}, 500
 
-    def delete(self, id):
-        pass
+        if provider:
+            return json_util._json_convert(provider), 200
+        return {"message": "provider not found"}, 404
+
+    def delete(self, _id):
+        try:
+            provider = mongo.db.providers.find_one({"_id": ObjectId(_id)})
+        except:
+            return {"message": "An error occurred trying to look up this provider"}, 500
+
+        if provider:
+            try:
+                mongo.db.providers.delete_one({"_id": ObjectId(_id)})
+            except:
+                return {"message": "An error occurred trying to delete this provider"}, 500
+            return {"message": "provider was deleted"}, 200
+        return {"message": "provider not found"}, 404
 
 
 class ProviderList(Resource):
     def get(self):
-        pass
+        try:
+            providers = mongo.db.providers.find()
+        except:
+            return {"message": "An error occurred looking up all of the providers"}, 500
+
+        if providers.count():
+            return {"providers": json_util._json_convert(providers)}, 200
+        return {"message": "No providers were found"}, 404

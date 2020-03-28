@@ -7,6 +7,7 @@ from flask_jwt_extended import JWTManager
 from blacklist import BLACKLIST
 from resources.user import UserRegister, User, UserLogin, TokenRefresh, UserLogout
 from resources.hospital import HospitalRegister, Hospital, HospitalList
+from resources.provider import ProviderRegister, Provider, ProviderList
 
 # create the app instance
 app = Flask(__name__)
@@ -101,6 +102,11 @@ api.add_resource(UserLogout, "/logout")
 api.add_resource(HospitalRegister, "/hospital")
 api.add_resource(Hospital, "/hospital/<string:_id>")
 api.add_resource(HospitalList, "/hospitallist")
+
+# Provider
+api.add_resource(ProviderRegister, "/provider")
+api.add_resource(Provider, "/provider/<string:_id>")
+api.add_resource(ProviderList, "/providerlist")
 
 
 if __name__ == "__main__":
