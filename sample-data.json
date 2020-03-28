@@ -233,54 +233,51 @@
 
 {
     "hospitals": [
-    {
-        "name": "Providence Saint Joseph Medical Center ",
-        "location": "Burbank, CA"
-    }
-],
-        "providers": [
-    {
-        "name": "Candice Jones",
-        "location": "Glendale, CA"
-    }
-],
-"resources": [
-    {
-        "resource_name": "Respirator",
-        "standard": [
-            "N95"
-            
-        ]
-    }
-]
+        {
+            "name": "Providence Saint Joseph Medical Center ",
+            "location": "Burbank, CA"
+        }
+    ],
+    "providers": [
+        {
+            "name": "Candice Jones",
+            "location": "Glendale, CA"
+        }
+    ],
+    "resources": [
+        {
+            "resource_name": "Respirator",
+            "standard": [
+                "N95"
+            ]
+        }
+    ]
 }
 
 {
     "hospitals": [
-    {
-        "name": "Olympia Medical Center ",
-        "location": "Los Angeles, CA"
-    }
-],
-"providers": [
-    {
-        "name": "Juan Calderon",
-        "location": "Chicago, IL"
-    }
-],
-"resources": [
-    {
-        "resource_name": "Gloves",
-        "standard": [
-            "LYY"
-            "LYZ"
-            "LZA"
-            
-        ]
-    }
+        {
+            "name": "Olympia Medical Center ",
+            "location": "Los Angeles, CA"
+        }
+    ],
+    "providers": [
+        {
+            "name": "Juan Calderon",
+            "location": "Chicago, IL"
+        }
+    ],
+    "resources": [
+        {
+            "resource_name": "Gloves",
+            "standard": [
+                "LYY",
+                "LYZ",
+                "LZA",
+            ]
+        }
     ]
 }
-
 
 {
     "hospitals": [
@@ -299,32 +296,102 @@
         {
             "resource_name": "Gowns",
             "standard": [
-                "NFPA1999"
+                "NFPA1999",
                 "EN13795"
             ]
         }
     ]
 }
 
-
 {
     "hospitals": [
         {
-            "name": "UCLA Medical Center",
-            "location": "Los Angeles, CA"
+            "name": "Kindred Hospital San Diego",
+            "location": "San Diego, CA"
         }
     ],
     "providers": [
         {
-            "name": "3M Science",
-            "location": "Maplewood, MN"
+            "name": "Thermo-Fisher Scientific",
+            "location": "Pleasanton, CA"
+        }
+    ],
+    "resources": [
+        {
+            "resource_name": "Sanitizer",
+            "standard": [
+                "70ipa",
+                "60eth"
+            ]
+        }
+    ]
+}
+
+{
+    "hospitals": [
+        {
+            "name": "Psychiatric Hospital of San Diego County",
+            "location": "San Diego, CA"
+        }
+    ],
+    "providers": [
+        {
+            "name": "George Salvcedo",
+            "location": "Issaquah, WA"
+        }
+    ],
+    "resources": [
+        {
+            "resource_name": "Gowns",
+            "standard": [
+                "NFPA1999"
+            ]
+        }
+    ]
+}
+
+{
+    "hospitals": [
+        {
+            "name": "UC San Diego Medical Center, Hillcrest",
+            "location": "San Diego, CA"
+        }
+    ],
+    "providers": [
+        {
+            "name": "Jordan Smith",
+            "location": "Vancouver, WA"
         }
     ],
     "resources": [
         {
             "resource_name": "Gloves",
             "standard": [
-                "LYY, LYZ"
+                "KGO",
+                "LYZ"
+            ]
+        }
+    ]
+}
+
+{
+    "hospitals": [
+        {
+            "name": "Sharp Memorial Hospital",
+            "location": "San Diego, CA"
+        }
+    ],
+    "providers": [
+        {
+            "name": "Rahul Wong",
+            "location": "Portland, OR"
+        }
+    ],
+    "resources": [
+        {
+            "resource_name": "Masks",
+            "standard": [
+                "ASTM Level 3"
             ]
         }
     ]
