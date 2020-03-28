@@ -11,7 +11,7 @@ app = Flask(__name__)
 
 
 app.config["MONGO_URI"] = (
-    os.environ.get("MONGODB_URI", "mongodb://localhost:27017/todolistapp")
+    os.environ.get("MONGODB_URI", "mongodb://localhost:27017/CoronaCare")
     + "?retryWrites=false"
 )
 app.config[
