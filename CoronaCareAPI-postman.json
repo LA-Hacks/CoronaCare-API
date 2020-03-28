@@ -1,0 +1,351 @@
+{
+	"info": {
+		"_postman_id": "7a11468d-6e17-4f59-8a78-8620a93462d3",
+		"name": "learn-flaskRESTful-dev-deployment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/user/<username>",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/user/Zach",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"user",
+						"Zach"
+					]
+				},
+				"description": "This will get the json for a user, given the username.\nThis endpoint is just for testing and should not be avaliable in production."
+			},
+			"response": []
+		},
+		{
+			"name": "/user/<usename>",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/user/Zach",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"user",
+						"Zach"
+					]
+				},
+				"description": "This will delete a username, given the user id. This endpoint is just for testing and should not be avaliable in production."
+			},
+			"response": []
+		},
+		{
+			"name": "/register",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\": \"Zach\",\n\t\"password\": \"hello123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/register",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"register"
+					]
+				},
+				"description": "This is the endpoint to create a new user"
+			},
+			"response": []
+		},
+		{
+			"name": "/login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "778d4827-6501-44f1-bfa3-f5426ef18792",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"Access token was not empty\"] = jsonData.access_token !== undefined;",
+							"",
+							"postman.setEnvironmentVariable(\"jwt_token\", jsonData.access_token);",
+							"",
+							"tests[\"Refresh token was not empty\"] = jsonData.refresh_token !== undefined;",
+							"",
+							"postman.setEnvironmentVariable(\"refresh_token\", jsonData.refresh_token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\": \"Zach\",\n\t\"password\": \"hello123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/login",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"login"
+					]
+				},
+				"description": "This will login a user and return a jwt token."
+			},
+			"response": []
+		},
+		{
+			"name": "/refresh",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f41e90f4-6ef0-4812-a037-e60f6252f11b",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"Access token was not empty\"] = jsonData.access_token !== undefined;",
+							"",
+							"postman.setEnvironmentVariable(\"jwt_token\", jsonData.access_token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{refresh_token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/refresh",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"refresh"
+					]
+				},
+				"description": "This allows a user to refresh their access token if the session has timed out."
+			},
+			"response": []
+		},
+		{
+			"name": "/logout",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{jwt_token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/logout",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"logout"
+					]
+				},
+				"description": "This will logout the current user"
+			},
+			"response": []
+		},
+		{
+			"name": "/createtodo",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{jwt_token}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Study\",\n\t\"description\": \"I need to do all of the practice tests for CS143A\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/createtodo",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"createtodo"
+					]
+				},
+				"description": "This will create a todo with the name and description given in the body of the request"
+			},
+			"response": []
+		},
+		{
+			"name": "/todo/<todo_id>",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{jwt_token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/todo/<todo_id>",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"todo",
+						"<todo_id>"
+					]
+				},
+				"description": "This will delete the todo given the todo_id."
+			},
+			"response": []
+		},
+		{
+			"name": "/todo/<todo_id>",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{jwt_token}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Study\",\n\t\"description\": \"I need to do all the reading for CS143A\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/todo/<todo_id>",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"todo",
+						"<todo_id>"
+					]
+				},
+				"description": "This will update the todo with the given id with the body of the request."
+			},
+			"response": []
+		},
+		{
+			"name": "/todo/<todo_id>",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{jwt_token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/todo/<todo_id>",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"todo",
+						"<todo_id>"
+					]
+				},
+				"description": "This gets the todo with the given id."
+			},
+			"response": []
+		},
+		{
+			"name": "/todolist",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{jwt_token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/todolist",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"todolist"
+					]
+				},
+				"description": "This gets all of the todos for the currently logged in user."
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

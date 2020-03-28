@@ -5,6 +5,8 @@ from flask_restful import Api
 from flask_jwt_extended import JWTManager
 
 from blacklist import BLACKLIST
+from resources.user import UserRegister, User, UserLogin, TokenRefresh, UserLogout
+from resources.hospital import HospitalRegister, Hospital, HospitalList
 
 # create the app instance
 app = Flask(__name__)
@@ -86,6 +88,19 @@ def revoked_token_callback():
         ),
         401,
     )
+
+
+# User
+api.add_resource(UserRegister, "/register")
+api.add_resource(User, "/user/<string:username>")
+api.add_resource(UserLogin, "/login")
+api.add_resource(TokenRefresh, "/refresh")
+api.add_resource(UserLogout, "/logout")
+
+# Hospital
+api.add_resource(HospitalRegister, "/hospital")
+api.add_resource(Hospital, "/hospital/<string:_id>")
+api.add_resource(HospitalList, "/hospitallist")
 
 
 if __name__ == "__main__":
