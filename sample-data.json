@@ -2,7 +2,7 @@
 // Masks: ASTM Level 3
 // Gown: NFPA1999, EN 13795, EN14126
 // Glove: LYY, LYZ, LZA, LZB, LZC, KGO
-// Sanitization: List Ingredients
+// Sanitization: Alcohol-based Hand Sanitizer 60% eth and 70% ipa
 {
     "hospitals": [
         {
