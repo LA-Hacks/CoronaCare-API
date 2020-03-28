@@ -1,0 +1,19 @@
+{
+    "hospitals": [{
+        "name": "Ronald Reagon",
+        "location": "Los Angeles, CA"
+    }],
+    "providers": [{
+        "name": "Ford Inc.",
+        "location": "Detroit, MI"
+    }],
+    "resources": [{
+            "resource_name": "masks",
+            "standard": ["N-95", "Homemade"]
+        },
+        {
+            "resource_name": "gounds",
+            "standard": ["PPE"]
+        }
+    ]
+}
