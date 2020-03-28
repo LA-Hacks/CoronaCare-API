@@ -53,6 +53,7 @@ class Hospital(Resource):
             return json_util._json_convert(hospital), 200
         return {"message": "hospital not found"}, 404
 
+    # Should probably not be used, since user depends on this staying forever
     def delete(self, _id):
         try:
             hospital = mongo.db.hospitals.find_one({"_id": ObjectId(_id)})

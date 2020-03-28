@@ -21,6 +21,10 @@ _user_parser.add_argument(
 _user_parser.add_argument(
     "password", type=str, required=True, help="This field cannot be blank."
 )
+# Hospital name needs to be required in production
+_user_parser.add_argument(
+    "hospital_id", type=str, required=False, help="This field cannot be blank."
+)
 
 
 class UserRegister(Resource):
@@ -41,9 +45,11 @@ class UserRegister(Resource):
 
         try:
             # insert document into users collection
-            mongo.db.users.insert_one(
-                {"username": data["username"], "password": data["password"]}
-            )
+            mongo.db.users.insert_one({
+                "username": data["username"],
+                "password": data["password"],
+                "hospital_id": data.get("hospital_id")
+            })
 
             return {"message": "User created successfully."}, 201
         except:

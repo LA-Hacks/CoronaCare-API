@@ -37,10 +37,10 @@ class ProviderRegister(Resource):
             mongo.db.providers.insert_one(
                 {"name": data["name"], "location": data["location"]}
             )
-
-            return {"message": "provider created successfully."}, 201
         except:
             return {"message": "An error occurred creating the provider"}, 500
+
+        return {"message": "provider created successfully."}, 201
 
 
 class Provider(Resource):
@@ -54,6 +54,7 @@ class Provider(Resource):
             return json_util._json_convert(provider), 200
         return {"message": "provider not found"}, 404
 
+    # Should probably not be used, since user depends on this staying forever
     def delete(self, _id):
         try:
             provider = mongo.db.providers.find_one({"_id": ObjectId(_id)})
