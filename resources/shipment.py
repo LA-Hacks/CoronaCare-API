@@ -41,11 +41,65 @@ _shipment_parser.add_argument(
 class ShipmentRegister(Resource):
     @jwt_required
     def post(self):
+        data = _shipment_parser.parse_args()
+
         # lookup the provider order and decrement by quantity, if zero, delete it
+        try:
+            supply = mongo.db.supplies.find_one(
+                {"resource_id": data['resource_id'], "provider_id": data['provider_id']})
+        except:
+            return {"message": "There was an error looking up the resource"}, 500
+
+        if supply.get("quantity", 0) - data.get("quantity", 0) > 0:
+            try:
+                mongo.db.supplies.update_one(
+                    {"_id": supply.get("_id")},
+                    {"$set": {"quantity": supply.get(
+                        "quantity", 0) - data.get("quantity", 0)}},
+                )
+            except:
+                return {"message": "there was an error updating the resource supply"}, 500
+        else:
+            try:
+                mongo.db.supplies.delete_one({"_id": supply.get("_id")})
+            except:
+                return {"message": "An error occurred trying to delete this supply"}, 500
 
         # lookup the hospital order and decrement by quantity, if zero, delete it
+        try:
+            request = mongo.db.requests.find_one(
+                {"resource_id": data['resource_id'], "hospital_id": data['hospital_id']})
+        except:
+            return {"message": "There was an error looking up the resource request"}, 500
+
+        if request.get("quantity", 0) - data.get("quantity", 0) > 0:
+            try:
+                mongo.db.requests.update_one(
+                    {"_id": request.get("_id")},
+                    {"$set": {"quantity": request.get(
+                        "quantity", 0) - data.get("quantity", 0)}},
+                )
+            except:
+                return {"message": "there was an error updating the resource request"}, 500
+        else:
+            try:
+                mongo.db.requests.delete_one({"_id": request.get("_id")})
+            except:
+                return {"message": "An error occurred trying to delete this request"}, 500
 
         # create the shipment
+        try:
+            mongo.db.shipments.insert_one({
+                "resource_name": data["resource_name"],
+                "resource_id": data['resource_id'],
+                "quantity": data['quantity'],
+                "provider_id": data['provider_id'],
+                "hospital_id": data['hospital_id']
+            })
+        except:
+            return {"message": "There was an error creating the shipment"}, 500
+
+        return {"message": "shipment created"}, 201
 
 
 class Shipment(Resource):
