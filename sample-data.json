@@ -1,4 +1,8 @@
-// Resource Types: Respirators (N95, N99, N100, FFP2, FFP3, KN95, P2, DS), Masks(ASTM Level 3) Gown (NFPA1999, EN 13795, EN14126), Glove(LYY, LYZ, LZA, LZB, LZC, KGO), Sanitization (List Ingredients)
+// Respirators: N95, N99, N100, FFP2, FFP3, KN95, P2, DS, Homemade
+// Masks: ASTM Level 3
+// Gown: NFPA1999, EN 13795, EN14126
+// Glove: LYY, LYZ, LZA, LZB, LZC, KGO
+// Sanitization: List Ingredients
 {
     "hospitals": [
         {
