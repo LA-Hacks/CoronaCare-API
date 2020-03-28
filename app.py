@@ -8,6 +8,7 @@ from blacklist import BLACKLIST
 from resources.user import UserRegister, User, UserLogin, TokenRefresh, UserLogout
 from resources.hospital import HospitalRegister, Hospital, HospitalList
 from resources.provider import ProviderRegister, Provider, ProviderList
+from resources.request import ResourceRequestRegister, ResourceRequest, ResourceRequestList, ResourceRequestListAll
 
 # create the app instance
 app = Flask(__name__)
@@ -107,6 +108,12 @@ api.add_resource(HospitalList, "/hospitallist")
 api.add_resource(ProviderRegister, "/provider")
 api.add_resource(Provider, "/provider/<string:_id>")
 api.add_resource(ProviderList, "/providerlist")
+
+# Resource Request
+api.add_resource(ResourceRequestRegister, "/request")
+api.add_resource(ResourceRequest, "/request/<string:_id>")
+api.add_resource(ResourceRequestList, "/requestlist")
+api.add_resource(ResourceRequestListAll, "/requestlistall")
 
 
 if __name__ == "__main__":
