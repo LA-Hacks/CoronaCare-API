@@ -1,5 +1,3 @@
-import traceback
-
 from flask_restful import Resource, reqparse
 from bson import json_util
 from bson.objectid import ObjectId
@@ -46,7 +44,6 @@ class ResourceRequestRegister(Resource):
             request = mongo.db.requests.find_one(
                 {"resource_id": data['resource_id'], "hospital_id": str(hospital['_id'])})
         except:
-            traceback.print_exc()
             return {"message": "There was an error looking up the resource"}, 500
 
         if request:

@@ -520,6 +520,133 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "/supply",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{jwt_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"resource_name\": \"gounds\",\n\t\"resource_id\": \"2\",\n\t\"quantity\": 5\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/supply",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"supply"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/supplylist",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{jwt_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/supplylist",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"supplylist"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/supply/<string:id>",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{jwt_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/supply/5e7f45b530c128595eaf3796",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"supply",
+						"5e7f45b530c128595eaf3796"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/supply/<string:id>",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{jwt_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/supply/5e7f45b530c128595eaf3796",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"supply",
+						"5e7f45b530c128595eaf3796"
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"protocolProfileBehavior": {}

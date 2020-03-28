@@ -9,6 +9,7 @@ from resources.user import UserRegister, User, UserLogin, TokenRefresh, UserLogo
 from resources.hospital import HospitalRegister, Hospital, HospitalList
 from resources.provider import ProviderRegister, Provider, ProviderList
 from resources.request import ResourceRequestRegister, ResourceRequest, ResourceRequestList, ResourceRequestListAll
+from resources.supply import ResourceSupplyRegister, ResourceSupply, ResourceSupplyList
 
 # create the app instance
 app = Flask(__name__)
@@ -114,6 +115,11 @@ api.add_resource(ResourceRequestRegister, "/request")
 api.add_resource(ResourceRequest, "/request/<string:_id>")
 api.add_resource(ResourceRequestList, "/requestlist")
 api.add_resource(ResourceRequestListAll, "/requestlistall")
+
+# Resource Supply
+api.add_resource(ResourceSupplyRegister, "/supply")
+api.add_resource(ResourceSupply, "/supply/<string:_id>")
+api.add_resource(ResourceSupplyList, "/supplylist")
 
 
 if __name__ == "__main__":
