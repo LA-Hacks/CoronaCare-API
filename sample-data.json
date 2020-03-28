@@ -2,7 +2,7 @@
 // Masks: ASTM Level 3
 // Gowns: NFPA1999, EN 13795, EN14126
 // Gloves: LYY, LYZ, LZA, LZB, LZC, KGO
-// Sanitization: 60eth, 70ipa
+// Sanitizer: 60eth, 70ipa
 {
     "hospitals": [
         {
@@ -102,6 +102,36 @@
             "resource_name": "Gloves",
             "standard": [
                 "LYY, LYZ"
+            ]
+        }
+    ]
+}
+
+{
+    "hospitals": [
+        {
+            "name": "Keck Medical Center of USC",
+            "location": "Los Angeles, CA"
+        }
+    ],
+    "providers": [
+        {
+            "name": "Zachary Sminto",
+            "location": "Irvine, CA"
+        }
+    ],
+    "resources": [
+        {
+            "resource_name": "Sanitizer",
+            "standard": [
+                "60eth",
+                "70ipa"
+            ]
+        }
+        {
+            "resource_name": "Masks",
+            "standard": [
+                "ASTM Level 3"
             ]
         }
     ]
