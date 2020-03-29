@@ -12,7 +12,7 @@ from db import mongo
 
 _resource_parser = reqparse.RequestParser()
 _resource_parser.add_argument(
-    "resource_name", type=str, required=True, help="This field cannot be blank."
+    "name", type=str, required=True, help="This field cannot be blank."
 )
 _resource_parser.add_argument(
     "standard", type=list, required=True, help="This field cannot be blank."
@@ -24,17 +24,17 @@ class ResourceRegister(Resource):
         data = _resource_parser.parse_args()
 
         try:
-            resource = mongo.db.resource.find_one(
-                {"resource_name": data["resource_name"]})
+            resource = mongo.db.resources.find_one(
+                {"name": data["name"]})
         except:
-            return {"message": "An error occurred looking up the resource_name"}, 500
+            return {"message": "An error occurred looking up the name"}, 500
 
         if resource:
             return {"message": "Resource has already been specified"}, 400
 
         try:
-            mongo.db.resource.insert_one(
-                {"resource_name": data["resource_name"], "standard": data["standard"]}
+            mongo.db.resources.insert_one(
+                {"name": data["name"], "standard": data["standard"]}
             )
 
             return {"message": "Resource created successfully."}, 201
@@ -45,7 +45,7 @@ class ResourceRegister(Resource):
 class Resource(Resource):
     def get(self, _id):
         try:
-            resource = mongo.db.resource.find_one({"_id": ObjectId(_id)})
+            resource = mongo.db.resources.find_one({"_id": ObjectId(_id)})
         except:
             return {"message": "An error occurred looking up the Resource"}, 500
 
@@ -56,13 +56,13 @@ class Resource(Resource):
     # Should probably not be used, since resources shouldn't be removed
     def delete(self, _id):
         try:
-            resource = mongo.db.hospitals.find_one({"_id": ObjectId(_id)})
+            resource = mongo.db.resources.find_one({"_id": ObjectId(_id)})
         except:
             return {"message": "An error occurred trying to look up this resource"}, 500
 
         if resource:
             try:
-                mongo.db.resource.delete_one({"_id": ObjectId(_id)})
+                mongo.db.resources.delete_one({"_id": ObjectId(_id)})
             except:
                 return {"message": "An error occurred trying to delete this resource"}, 500
             return {"message": "resource was deleted"}, 200
@@ -72,10 +72,10 @@ class Resource(Resource):
 class ResourceList(Resource):
     def get(self):
         try:
-            resource = mongo.db.resource.find()
+            resource = mongo.db.resources.find()
         except:
             return {"message": "An error occurred looking up all of the resource"}, 500
 
         if resource.count():
             return {"resource": json_util._json_convert(resource)}, 200
-        return {"message": "No resource were found"}, 404
+        return {"message": "No resource(s) were found"}, 404
