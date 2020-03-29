@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-=======
 
-<<<<<<< HEAD
 {
     "hospitals": [
         {
@@ -440,32 +437,4 @@
             ]
         }
     ]
-<<<<<<< HEAD
-=======
-}
-
-{
-    "hospitals": [
-        {
-            "name": "Cedars-Sinai Medical Center",
-            "location": "Los Angeles, CA"
-        }
-    ],
-    "providers": [
-        {
-            "name": "Thermo-Fisher Scientific",
-            "location": "Pleasanton, CA"
-        }
-    ],
-    "resources": [
-        {
-            "resource_name": "Sanitizer",
-            "standard": [
-                "60eth",
-                "70ipa"
->>>>>>> 6cadda68e5eeebc4d480d43184b3031619f36e83
-            ]
-        } 
-    ]
->>>>>>> Dhruv-branch
 }
