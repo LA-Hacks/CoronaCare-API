@@ -1,3 +1,9 @@
+
+// Respirators: N95, N99, N100, FFP2, FFP3, KN95, P2, Homemade
+// Masks: ASTM Level 3
+// Gowns: NFPA1999, EN 13795, EN14126
+// Gloves: LYY, LYZ, LZA, LZB, LZC, KGO
+// Sanitization: 60eth, 70ipa
 {
     "hospitals": [
         {
@@ -222,7 +228,24 @@
                 "LZC",
                 "KGO"
             ]
-        },
+        }
+    ]
+}
+
+{
+    "hospitals": [
+        {
+            "name": "Cedars-Sinai Medical Center",
+            "location": "Los Angeles, CA"
+        }
+    ],
+    "providers": [
+        {
+            "name": "Thermo-Fisher Scientific",
+            "location": "Pleasanton, CA"
+        }
+    ],
+    "resources": [
         {
             "resource_name": "Sanitizer",
             "standard": [
