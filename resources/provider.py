@@ -16,7 +16,13 @@ _provider_parser.add_argument(
     "name", type=str, required=True, help="This field cannot be blank."
 )
 _provider_parser.add_argument(
-    "location", type=str, required=True, help="This field cannot be blank."
+    "address", type=str, required=True, help="This field cannot be blank."
+)
+_provider_parser.add_argument(
+    "city_state", type=str, required=True, help="This field cannot be blank."
+)
+_provider_parser.add_argument(
+    "zip", type=str, required=True, help="This field cannot be blank."
 )
 
 
@@ -34,9 +40,12 @@ class ProviderRegister(Resource):
             return {"message": "A provider with that username already exists"}, 400
 
         try:
-            mongo.db.providers.insert_one(
-                {"name": data["name"], "location": data["location"]}
-            )
+            mongo.db.providers.insert_one({
+                "name": data["name"],
+                "address": data["address"],
+                "city_state": data["city_state"],
+                "zip": data["zip"]
+            })
         except:
             return {"message": "An error occurred creating the provider"}, 500
 

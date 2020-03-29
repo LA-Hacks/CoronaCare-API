@@ -1,5 +1,7 @@
 import os
 import yaml
+import json
+import requests
 
 from flask import Flask, jsonify
 from flask_restful import Api
@@ -36,6 +38,28 @@ def create_app():
         "refresh",
     ]  # allow blacklisting for access and refresh tokens
     app.config["JWT_SECRET_KEY"] = "secret"  #
+
+    @app.route('/')
+    def home():
+        return "<h1>CoronaCare API :)<h1/>"
+
+    @app.route('/setup')
+    def add_sample_data():
+        data = {}
+        with open('sample-data.json') as f:
+            data = json.load(f)
+
+        for hospital in data.get('hospitals'):
+            requests.post(url="http://localhost:5000/hospital", data=hospital)
+
+        for provider in data.get('providers'):
+            requests.post(url="http://localhost:5000/provider", data=provider)
+
+        # this is not working for some reason
+        for resource in data.get('resources'):
+            requests.post(url="http://localhost:5000/resource", data=resource)
+
+        return "It worked!"
 
     # creates an instance of flask-restful api that will be used to add our resources
     api = Api(app)

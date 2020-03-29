@@ -30,6 +30,7 @@ class ResourceRegister(Resource):
             return {"message": "An error occurred looking up the name"}, 500
 
         if resource:
+            print(resource['name'])
             return {"message": "Resource has already been specified"}, 400
 
         try:

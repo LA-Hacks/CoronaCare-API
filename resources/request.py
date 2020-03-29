@@ -19,6 +19,9 @@ _request_parser.add_argument(
     "resource_id", type=str, required=True, help="This field cannot be blank."
 )
 _request_parser.add_argument(
+    "standard", type=str, required=True, help="This field cannot be blank."
+)
+_request_parser.add_argument(
     "quantity", type=int, required=True, help="This field cannot be blank."
 )
 
@@ -43,7 +46,7 @@ class ResourceRequestRegister(Resource):
         # check to see if there is a pending request for that resource
         try:
             request = mongo.db.requests.find_one(
-                {"resource_id": data['resource_id'], "hospital_id": str(hospital['_id'])})
+                {"resource_id": data['resource_id'], "standard": data["standard"], "hospital_id": str(hospital['_id'])})
         except:
             return {"message": "There was an error looking up the resource"}, 500
 
@@ -61,7 +64,9 @@ class ResourceRequestRegister(Resource):
         # if there is no pending request for that resource, create one
         try:
             mongo.db.requests.insert_one({
+                "resource_name": data['resource_name'],
                 "resource_id": data['resource_id'],
+                "standard": data["standard"],
                 "hospital_id": str(hospital['_id']),
                 "quantity": data['quantity']
             })

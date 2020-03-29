@@ -182,23 +182,23 @@
         }
     ],
     "resources": [{
-            "resource_name": "Respirators",
+            "name": "Respirators",
             "standard": ["N95", "N99", "N100", "FFP2", "FFP3", "KN95", "P2", "Homemade"]
         },
         {
-            "resource_name": "Gowns",
+            "name": "Gowns",
             "standard": ["NFPA1999", "EN 13795", "EN14126"]
         },
         {
-            "resource_name": "Masks",
+            "name": "Masks",
             "standard": ["ASTM Level 3", "Homemade"]
         },
         {
-            "resource_name": "Gloves",
+            "name": "Gloves",
             "standard": ["LYY", "LYZ", "LZA", "LZB", "LZC", "KGO"]
         },
         {
-            "resource_name": "Sanitizer",
+            "name": "Sanitizer",
             "standard": ["60eth", "70ipa"]
         }
     ]

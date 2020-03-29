@@ -21,14 +21,24 @@ _user_parser.add_argument(
 _user_parser.add_argument(
     "password", type=str, required=True, help="This field cannot be blank."
 )
-
-
+_user_parser.add_argument(
+    "phone_number", type=str, required=True, help="This field cannot be blank."
+)
 # Hospital Name or Provider Name needs to be required in production
 _user_parser.add_argument(
     "hospital_id", type=str, required=False, help="This field cannot be blank."
 )
 _user_parser.add_argument(
     "provider_id", type=str, required=False, help="This field cannot be blank."
+)
+
+
+_login_parser = reqparse.RequestParser()
+_login_parser.add_argument(
+    "username", type=str, required=True, help="This field cannot be blank."
+)
+_login_parser.add_argument(
+    "password", type=str, required=True, help="This field cannot be blank."
 )
 
 
@@ -54,7 +64,8 @@ class UserRegister(Resource):
                 "username": data["username"],
                 "password": data["password"],
                 "hospital_id": data.get("hospital_id"),
-                "provider_id": data.get("provider_id")
+                "provider_id": data.get("provider_id"),
+                "phone_number": data.get("phone_number")
             })
 
             return {"message": "User created successfully."}, 201
@@ -98,7 +109,7 @@ class User(Resource):
 class UserLogin(Resource):
     def post(self):
         # call the parser on the body of the request and store dict of args in data
-        data = _user_parser.parse_args()
+        data = _login_parser.parse_args()
 
         try:
             # look for first document in users collection to have a username data['username']

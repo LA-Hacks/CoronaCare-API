@@ -23,6 +23,9 @@ _shipment_parser.add_argument(
     "quantity", type=int, required=True, help="This field cannot be blank."
 )
 _shipment_parser.add_argument(
+    "standard", type=int, required=True, help="This field cannot be blank."
+)
+_shipment_parser.add_argument(
     "hospital_id", type=int, required=True, help="This field cannot be blank."
 )
 _shipment_parser.add_argument(
@@ -44,7 +47,7 @@ class ShipmentCreator:
         # search for a supply
         try:
             supplies = mongo.db.supplies.find(
-                {"resource_id": data['resource_id']})
+                {"resource_id": data['resource_id'], "standard": data['standard']})
         except:
             print("There was an error looking up supplies")
             return
@@ -64,8 +67,10 @@ class ShipmentCreator:
         # send the request id and the shipment id to the ShipmentRegister
         if provider_id:
             cls.createShipment({
+                "resource_name": data.get("name"),
                 "resource_id": data.get("resource_id"),
                 "quantity": shipment_count,
+                "standard": data.get("standard"),
                 "hospital_id": data.get("hospital_id"),
                 "provider_id": provider_id
             })
@@ -75,7 +80,7 @@ class ShipmentCreator:
         # search for a request
         try:
             requests = mongo.db.requests.find(
-                {"resource_id": data['resource_id']})
+                {"resource_id": data['resource_id'], "standard": data['standard']})
         except:
             print("There was an error looking up supplies")
             return
@@ -89,8 +94,10 @@ class ShipmentCreator:
                                  request.get("quantity", 0))
 
             print(cls.createShipment({
+                "resource_name": data.get("resource_name"),
                 "resource_id": data.get("resource_id"),
                 "quantity": shipment_count,
+                "standard": data["standard"],
                 "hospital_id": request.get("hospital_id"),
                 "provider_id": data.get("provider_id")
             }))
@@ -102,7 +109,7 @@ class ShipmentCreator:
          # lookup the provider order and decrement by quantity, if zero, delete it
         try:
             supply = mongo.db.supplies.find_one(
-                {"resource_id": data['resource_id'], "provider_id": data['provider_id']})
+                {"resource_id": data['resource_id'], "standard": data['standard'], "provider_id": data['provider_id']})
         except:
             return {"message": "There was an error looking up the resource"}, 500
 
@@ -143,14 +150,26 @@ class ShipmentCreator:
             except:
                 return {"message": "An error occurred trying to delete this request"}, 500
 
+        try:
+            hospital = mongo.db.hospitals.find_one(
+                {"_id": ObjectId(data['hospital_id'])})
+            provider = mongo.db.providers.find_one(
+                {"_id": ObjectId(data['provider_id'])})
+        except:
+            return {"message": "An error ocurred tyring to lookup the hospital and the provider"}, 500
+
         # create the shipment
         try:
             # should also have the to address, from address, and resource name
             mongo.db.shipments.insert_one({
+                "resource_name": data['resource_name'],
                 "resource_id": data['resource_id'],
                 "quantity": data['quantity'],
+                "standard": data['standard'],
                 "provider_id": data['provider_id'],
-                "hospital_id": data['hospital_id']
+                "hospital_id": data['hospital_id'],
+                "hospital": hospital,
+                "provider": provider
             })
         except:
             traceback.print_exc()
@@ -169,7 +188,7 @@ class ShipmentRegister(Resource):
         # lookup the provider order and decrement by quantity, if zero, delete it
         try:
             supply = mongo.db.supplies.find_one(
-                {"resource_id": data['resource_id'], "provider_id": data['provider_id']})
+                {"resource_id": data['resource_id'], "standard": data['standard'], "provider_id": data['provider_id']})
         except:
             return {"message": "There was an error looking up the resource"}, 500
 
@@ -191,7 +210,7 @@ class ShipmentRegister(Resource):
         # lookup the hospital order and decrement by quantity, if zero, delete it
         try:
             request = mongo.db.requests.find_one(
-                {"resource_id": data['resource_id'], "hospital_id": data['hospital_id']})
+                {"resource_id": data['resource_id'], "standard": data['standard'], "hospital_id": data['hospital_id']})
         except:
             return {"message": "There was an error looking up the resource request"}, 500
 
@@ -210,14 +229,25 @@ class ShipmentRegister(Resource):
             except:
                 return {"message": "An error occurred trying to delete this request"}, 500
 
+        try:
+            hospital = mongo.db.hospitals.find_one(
+                {"_id": ObjectId(data['hospital_id'])})
+            provider = mongo.db.providers.find_one(
+                {"_id": ObjectId(data['provider_id'])})
+        except:
+            return {"message": "An error ocurred tyring to lookup the hospital and the provider"}, 500
+
         # create the shipment
         try:
             mongo.db.shipments.insert_one({
                 "resource_name": data["resource_name"],
                 "resource_id": data['resource_id'],
                 "quantity": data['quantity'],
+                "standard": data['standard'],
                 "provider_id": data['provider_id'],
-                "hospital_id": data['hospital_id']
+                "hospital_id": data['hospital_id'],
+                "hospital": hospital,
+                "provider": provider,
             })
         except:
             return {"message": "There was an error creating the shipment"}, 500

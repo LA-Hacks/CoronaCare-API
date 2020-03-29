@@ -15,7 +15,13 @@ _hospital_parser.add_argument(
     "name", type=str, required=True, help="This field cannot be blank."
 )
 _hospital_parser.add_argument(
-    "location", type=str, required=True, help="This field cannot be blank."
+    "address", type=str, required=True, help="This field cannot be blank."
+)
+_hospital_parser.add_argument(
+    "city_state", type=str, required=True, help="This field cannot be blank."
+)
+_hospital_parser.add_argument(
+    "zip", type=str, required=True, help="This field cannot be blank."
 )
 
 
@@ -33,9 +39,12 @@ class HospitalRegister(Resource):
             return {"message": "A hospital with that username already exists"}, 400
 
         try:
-            mongo.db.hospitals.insert_one(
-                {"name": data["name"], "location": data["location"]}
-            )
+            mongo.db.hospitals.insert_one({
+                "name": data["name"],
+                "address": data["address"],
+                "city_state": data["city_state"],
+                "zip": data["zip"]
+            })
 
             return {"message": "Hospital created successfully."}, 201
         except:

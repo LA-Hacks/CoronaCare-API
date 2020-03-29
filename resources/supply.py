@@ -20,6 +20,9 @@ _supply_parser.add_argument(
     "resource_id", type=str, required=True, help="This field cannot be blank."
 )
 _supply_parser.add_argument(
+    "standard", type=str, required=True, help="This field cannot be blank."
+)
+_supply_parser.add_argument(
     "quantity", type=int, required=True, help="This field cannot be blank."
 )
 
@@ -44,7 +47,7 @@ class ResourceSupplyRegister(Resource):
         # check to see if there is a pending supply for that resource
         try:
             supply = mongo.db.supplies.find_one(
-                {"resource_id": data['resource_id'], "provider_id": str(provider['_id'])})
+                {"resource_id": data['resource_id'], "standard": data['standard'], "provider_id": str(provider['_id'])})
         except:
             return {"message": "There was an error looking up the resource"}, 500
 
@@ -62,7 +65,9 @@ class ResourceSupplyRegister(Resource):
         # if there is no pending supply for that resource, create one
         try:
             mongo.db.supplies.insert_one({
+                "resource_name": data['resource_name'],
                 "resource_id": data['resource_id'],
+                "standard": data['standard'],
                 "provider_id": str(provider['_id']),
                 "quantity": data['quantity']
             })
