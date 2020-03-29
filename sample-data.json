@@ -1,4 +1,5 @@
 
+<<<<<<< HEAD
 {
     "hospitals": [
         {
@@ -207,6 +208,260 @@
         {
             "resource_name": "Sanitizer",
             "standard": ["60eth", "70ipa"
+=======
+// Respirators: N95, N99, N100, FFP2, FFP3, KN95, P2, Homemade
+// Masks: ASTM Level 3
+// Gowns: NFPA1999, EN 13795, EN14126
+// Gloves: LYY, LYZ, LZA, LZB, LZC, KGO
+// Sanitization: 60eth, 70ipa
+{
+    "hospitals": [
+        {
+            "name": "Ronald Reagan UCLA Medical Center",
+            "address": "757 Westwood Plaza",
+            "city_state": "Los Angeles, CA",
+            "zip": "90095"
+        },
+        {
+            "name": "Dignity Health - California Hospital Medical Center",
+            "address": "1401 S Grand Ave",
+            "city_state": "Los Angeles, CA",
+            "zip": "90015"
+        },
+        {
+            "name": "Olympia Medical Center",
+            "address": "5900 W Olympic Blvd",
+            "city_state": "Los Angeles, CA",
+            "zip": "90036"
+        },
+        {
+            "name": "Southern California Hospital at Hollywood",
+            "address": "6245 De Longpre Ave",
+            "city_state": "Los Angeles, CA",
+            "zip": "90028"
+        },
+        {
+            "name": "St. Vincent Medical Center",
+            "address": "2131 W 3rd St",
+            "city_state": "Los Angeles, CA",
+            "zip": "90057"
+        },
+        {
+            "name": "Orange County Global Medical Center",
+            "address": "1001 N Tustin Ave,",
+            "city_state": "Santa Ana, CA",
+            "zip": "92705"
+        },
+        {
+            "name": "Chapman Global Medical Center",
+            "address": "2601 E Chapman Ave",
+            "city_state": "Orange, CA",
+            "zip": "92869"
+        },
+        {
+            "name": "Orange Coast Memorial Hospital",
+            "address": "9920 Talbert Ave",
+            "city_state": "Fountain Valley, CA",
+            "zip": "92708"
+        },
+        {
+            "name": "MemorialCare Orange Coast Medical Center",
+            "address": "18111 Brookhurst St",
+            "city_state": "Fountain Valley, CA",
+            "zip": "92708"
+        },
+        {
+            "name": "UC Irvine Medical Center",
+            "address": "Administration Way",
+            "city_state": "Orange, CA",
+            "zip": "92868"
+        },
+        {
+            "name": "Palmdale Regional Medical Center",
+            "address": "38600 Medical Center Dr",
+            "city_state": "Palmdale, CA",
+            "zip": "93551"
+        },
+        {
+            "name": "Antelope Valley Hospital",
+            "address": "1600 W Ave J",
+            "city_state": "Lancaster, CA",
+            "zip": "93534"
+        },
+        {
+            "name": "Santa Paula Hospital",
+            "address": "825 N 10th St",
+            "city_state": "Santa Paula, CA",
+            "zip": "93060"
+        },
+        {
+            "name": "Santa Barbara Cottage Hospital",
+            "address": "400 W Pueblo St",
+            "city_state": "Santa Barabara, CA",
+            "zip": "93105"
+        },
+        {
+            "name": "Goleta Valley Cottage Hospital",
+            "address": "351 S Patterson Ave",
+            "city_state": "Goleta, CA",
+            "zip": "93111"
+        }
+    ],
+    "providers": [
+        {
+            "name": "Ford Inc.",
+            "address": "One American Road Dearborn",
+            "city_state": "Dearborn, MI",
+            "zip": "48126"
+        },
+        {
+            "name": "General Motors",
+            "address": "300 Renaissance Ctr",
+            "city_state": "Detriot, MI",
+            "zip": "48243"
+        },
+        {
+            "name": "Tracy Sminto",
+            "address": "3341 Ashbourne Cr",
+            "city_state": "San Ramon, CA",
+            "zip": "94582"
+        },
+        {
+            "name": "Stanley Yelnats",
+            "address": "923 Woodland Dr",
+            "city_state": "San Ramon, CA",
+            "zip": "94582"
+        },
+        {
+            "name": "Ruv Raddle",
+            "address": "447 Santander Dr.",
+            "city_state": "San Ramon, CA",
+            "zip": "94583"
+        },
+        {
+            "name": "Jordan Smith",
+            "address": "1307 University Way",
+            "city_state": "Seattle, WA",
+            "zip": "98105"
+        },
+        {
+            "name": "Thermo Fisher Scientific",
+            "address": "22025 20th Ave SE",
+            "city_state": "Bothell, WA",
+            "zip": "98021"
+        },
+        {
+            "name": "Gilead",
+            "address": "301 Velocity Way",
+            "city_state": "Foster City, CA",
+            "zip": "94404"
+        },
+        {
+            "name": "Google Inc.",
+            "address": "1600 Amphitheatre Pkwy",
+            "city_state": "Mountain, CA",
+            "zip": "94043"
+        },
+        {
+            "name": "Pfizer Inc.",
+            "address": "1776 Centennial Dr",
+            "city_state": "McPherson, KS",
+            "zip": "67460"
+        },
+        {
+            "name": "Mark Zuckerberg",
+            "address": "1601 Willow Road",
+            "city_state": "Menlo Park, CA",
+            "zip": "94025"
+        },
+        {
+            "name": "Elon Musk",
+            "address": "3500 Deer Creek Rd",
+            "city_state": "Palo Alto, CA",
+            "zip": "94304"
+        },
+        {
+            "name": "UW Research",
+            "address": "850 Republican St",
+            "city_state": "Seattle, WA",
+            "zip": "98109"
+        },
+        {
+            "name": "Alibaba",
+            "address": "400 S El Camino Real",
+            "city_state": "San Mateo, CA",
+            "zip": "94402"
+        },
+        {
+            "name": "Genentech",
+            "address": "4625 NE Brookwood Pkwy",
+            "city_state": "Hillsboro, OR",
+            "zip": "97124"
+        }
+    ],
+    "resources": [
+        {
+            "resource_name": "Respirators",
+            "standard": [
+                "N95",
+                "N99",
+                "N100",
+                "FFP2",
+                "FFP3",
+                "KN95",
+                "P2",
+                "Homemade"
+            ]
+        },
+        {
+            "resource_name": "Gowns",
+            "standard": [
+                "NFPA1999",
+                "EN 13795",
+                "EN14126"
+            ]
+        },
+        {
+            "resource_name": "Masks",
+            "standard": [
+                "ASTM Level 3",
+                "Homemade"
+            ]
+        },
+        {
+            "resource_name": "Gloves",
+            "standard": [
+                "LYY",
+                "LYZ",
+                "LZA",
+                "LZB",
+                "LZC",
+                "KGO"
+            ]
+        }
+    ]
+}
+
+{
+    "hospitals": [
+        {
+            "name": "Cedars-Sinai Medical Center",
+            "location": "Los Angeles, CA"
+        }
+    ],
+    "providers": [
+        {
+            "name": "Thermo-Fisher Scientific",
+            "location": "Pleasanton, CA"
+        }
+    ],
+    "resources": [
+        {
+            "resource_name": "Sanitizer",
+            "standard": [
+                "60eth",
+                "70ipa"
+>>>>>>> 6cadda68e5eeebc4d480d43184b3031619f36e83
             ]
         } 
     ]
