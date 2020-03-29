@@ -11,6 +11,7 @@ from resources.provider import ProviderRegister, Provider, ProviderList
 from resources.request import ResourceRequestRegister, ResourceRequest, ResourceRequestList, ResourceRequestListAll
 from resources.supply import ResourceSupplyRegister, ResourceSupply, ResourceSupplyList
 from resources.shipment import ShipmentRegister, Shipment, ShipmentList
+from resources.resource import ResourceRegister, Resource, ResourceList
 
 # create the app instance
 app = Flask(__name__)
@@ -116,6 +117,11 @@ api.add_resource(ResourceRequestRegister, "/request")
 api.add_resource(ResourceRequest, "/request/<string:_id>")
 api.add_resource(ResourceRequestList, "/requestlist")
 api.add_resource(ResourceRequestListAll, "/requestlistall")
+
+# Resource
+api.add_resource(ResourceRegister, "/resource")
+api.add_resource(Resource, "/resource/<string:_id>")
+api.add_resource(ResourceList, "/resourcelist")
 
 # Resource Supply
 api.add_resource(ResourceSupplyRegister, "/supply")
