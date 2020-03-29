@@ -6,6 +6,43 @@
 	},
 	"item": [
 		{
+			"name": "/setup",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\": \"hello5\",\n\t\"password\": \"hello123\",\n\t\"hospital_id\": \"5e7f3b06bf402321e14de571\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/setup",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"setup"
+					]
+				},
+				"description": "This is the endpoint to create a new user"
+			},
+			"response": []
+		},
+		{
 			"name": "/register",
 			"request": {
 				"method": "POST",
@@ -19,7 +56,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"username\": \"hello5\",\n\t\"password\": \"hello123\",\n\t\"hospital_id\": \"5e7f3b06bf402321e14de571\"\n}",
+					"raw": "{\n\t\"username\": \"hello\",\n\t\"password\": \"hello123\",\n\t\"hospital_id\": \"5e80466d3673a1cf56a5647e\",\n\t\"phone_number\": \"5103144473\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -207,7 +244,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"name\": \"Ronald Reagon\",\n\t\"location\": \"Los Angeles, CA\"\n}",
+					"raw": "{\n    \"name\": \"Antelope Valley Hospital\",\n    \"address\": \"1600 W Ave J\",\n    \"city_state\": \"Lancaster, CA\",\n    \"zip\": \"93534\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -293,7 +330,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"resource_name\": \"Respirators\",\n    \"standard\": [\"N95\", \"N99\", \"N100\", \"FFP2\", \"FFP3\", \"KN95\", \"P2\", \"Homemade\"]\n}",
+					"raw": "{\n    \"name\": \"Respirators\",\n    \"standard\": [\"N95\", \"N99\", \"N100\", \"FFP2\", \"FFP3\", \"KN95\", \"P2\", \"Homemade\"]\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -393,7 +430,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"name\": \"Ford Inc.\",\n\t\"location\": \"Detroit, MI\"\n}",
+					"raw": "{\n    \"name\": \"Ford Inc.\",\n    \"address\": \"One American Road Dearborn\",\n    \"city_state\": \"Dearborn, MI\",\n    \"zip\": \"48126\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -484,7 +521,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"resource_name\": \"masks\",\n\t\"resource_id\": \"1\",\n\t\"quantity\": 5\n}",
+					"raw": "{\n\t\"resource_name\": \"Respirators\",\n\t\"resource_id\": \"5e80487ae2596ad315066e87\",\n\t\"standard\": \"N95\",\n\t\"quantity\": 1000\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -640,7 +677,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"resource_name\": \"gounds\",\n\t\"resource_id\": \"2\",\n\t\"quantity\": 5\n}",
+					"raw": "{\n\t\"resource_name\": \"Respirators\",\n\t\"resource_id\": \"5e80487ae2596ad315066e87\",\n\t\"standard\": \"N95\",\n\t\"quantity\": 7000\n}",
 					"options": {
 						"raw": {
 							"language": "json"
