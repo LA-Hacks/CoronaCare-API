@@ -15,7 +15,7 @@ _resource_parser.add_argument(
     "name", type=str, required=True, help="This field cannot be blank."
 )
 _resource_parser.add_argument(
-    "standard", type=list, required=True, help="This field cannot be blank."
+    "standard", type=list, action="append", location="json", required=True, help="This field cannot be blank."
 )
 
 
@@ -34,7 +34,8 @@ class ResourceRegister(Resource):
 
         try:
             mongo.db.resources.insert_one(
-                {"name": data["name"], "standard": data["standard"]}
+                {"name": data["name"], "standard": [
+                    "".join([ch for ch in str_lst]) for str_lst in data["standard"]]}
             )
 
             return {"message": "Resource created successfully."}, 201

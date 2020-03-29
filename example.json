@@ -1,0 +1,36 @@
+county, cases, state
+contra costa, 50, CA
+alameda, 100, CA
+orange country, 200, CA
+
+dictionary = {}
+for row in csv:
+    dictionary[row[0]] = {
+        "cases": row[1],
+        "state": row[2]
+    }
+
+
+dictionary = {
+    "contra costa": {
+        "cases": 50,
+        "state": "CA"
+    },
+    "alameda": {
+        "cases": 100,
+        "state": "CA"
+    },
+    "orange country": {
+        "cases": 200,
+        "state": "CA"
+    }
+}
+
+hospital_county_name = "contra costa"
+
+for row in csv:
+    if row[0] == hospital_county_name:
+    return row[1]
+
+
+dict.get(hospital_county_name).get("cases")

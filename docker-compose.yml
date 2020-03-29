@@ -1,0 +1,18 @@
+version: "3"
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: zpinto/corona-care:latest
+    ports:
+      - 5000:8080
+
+  db:
+    image: mongo
+    volumes:
+      - corona-care-data:/data/db
+
+volumes:
+  corona-care-data:

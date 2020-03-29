@@ -19,7 +19,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"username\": \"hello\",\n\t\"password\": \"hello123\",\n\t\"hospital_id\": \"5e7f2ffa815f3912f86dbf21\"\n}",
+					"raw": "{\n\t\"username\": \"hello5\",\n\t\"password\": \"hello123\",\n\t\"hospital_id\": \"5e7f3b06bf402321e14de571\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -274,6 +274,106 @@
 					"path": [
 						"hospital",
 						"5e7f12966ddc857539c53aeb"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/resource",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"resource_name\": \"Respirators\",\n    \"standard\": [\"N95\", \"N99\", \"N100\", \"FFP2\", \"FFP3\", \"KN95\", \"P2\", \"Homemade\"]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/resource",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"resource"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/resourcelist",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/hospitallist",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"hospitallist"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/resource/<string:id>",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/resource/5e80035229ff62e521ce5aa8",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"resource",
+						"5e80035229ff62e521ce5aa8"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/resource/<string:id>",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/resource/5e80035229ff62e521ce5aa8",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"resource",
+						"5e80035229ff62e521ce5aa8"
 					]
 				}
 			},
@@ -643,6 +743,172 @@
 					"path": [
 						"supply",
 						"5e7f45b530c128595eaf3796"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/shipment",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{jwt_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/shipment",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"shipment"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/shipmentlist",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{jwt_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/shipmentlist",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"shipmentlist"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/shipment/<string:id>",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{jwt_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/shipment/<string:id>",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"shipment",
+						"<string:id>"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/shipment/<string:id>",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{jwt_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"resource_name\": \"gounds\",\n\t\"resource_id\": \"2\",\n\t\"quantity\": 5\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/shipment/<string:id>",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"shipment",
+						"<string:id>"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/shipment/<string:id>",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{jwt_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/shipment/<string:id>",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"shipment",
+						"<string:id>"
 					]
 				}
 			},
