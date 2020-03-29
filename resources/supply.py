@@ -9,6 +9,7 @@ from flask_jwt_extended import (
 )
 
 from db import mongo
+from resources.shipment import ShipmentCreator
 
 
 _supply_parser = reqparse.RequestParser()
@@ -67,6 +68,10 @@ class ResourceSupplyRegister(Resource):
             })
         except:
             return {"message": "There was an error creating the resource supply"}, 500
+
+        data['provider_id'] = str(provider['_id'])
+
+        ShipmentCreator.fromSupplyCreate(data)
 
         return {"message": "resource supply created"}, 201
 

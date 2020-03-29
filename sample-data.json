@@ -1,8 +1,17 @@
 {
     "hospitals": [{
-        "name": "Ronald Reagon",
-        "location": "Los Angeles, CA"
-    }],
+            "name": "Ronald Reagon",
+            "location": "Los Angeles, CA"
+        },
+        {
+            "name": "Ronald Reagon",
+            "location": "Los Angeles, CA"
+        },
+        {
+            "name": "Ronald Reagon",
+            "location": "Los Angeles, CA"
+        }
+    ],
     "providers": [{
         "name": "Ford Inc.",
         "location": "Detroit, MI"
