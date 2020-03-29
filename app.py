@@ -10,6 +10,7 @@ from resources.hospital import HospitalRegister, Hospital, HospitalList
 from resources.provider import ProviderRegister, Provider, ProviderList
 from resources.request import ResourceRequestRegister, ResourceRequest, ResourceRequestList, ResourceRequestListAll
 from resources.supply import ResourceSupplyRegister, ResourceSupply, ResourceSupplyList
+from resources.shipment import ShipmentRegister, Shipment, ShipmentList
 
 # create the app instance
 app = Flask(__name__)
@@ -121,9 +122,14 @@ api.add_resource(ResourceSupplyRegister, "/supply")
 api.add_resource(ResourceSupply, "/supply/<string:_id>")
 api.add_resource(ResourceSupplyList, "/supplylist")
 
+# Shipment
+api.add_resource(ShipmentRegister, "/shipment")
+api.add_resource(Shipment, "/shipment/<string:_id>")
+api.add_resource(ShipmentList, "/shipmentlist")
+
 
 if __name__ == "__main__":
     from db import mongo
 
     mongo.init_app(app)
-    app.run(port=5000, debug=True)
+    app.run(port=5000, debug=False)

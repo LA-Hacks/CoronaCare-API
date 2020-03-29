@@ -88,12 +88,12 @@ class ShipmentCreator:
             shipment_count = min(data.get("quantity", 0),
                                  request.get("quantity", 0))
 
-            cls.createShipment({
+            print(cls.createShipment({
                 "resource_id": data.get("resource_id"),
                 "quantity": shipment_count,
-                "hospital_id": data.get("provider_id"),
-                "provider_id": request.get("hospital_id")
-            })
+                "hospital_id": request.get("hospital_id"),
+                "provider_id": data.get("provider_id")
+            }))
 
             data['quantity'] = data.get("quantity", 0) - shipment_count
 
@@ -145,14 +145,15 @@ class ShipmentCreator:
 
         # create the shipment
         try:
+            # should also have the to address, from address, and resource name
             mongo.db.shipments.insert_one({
-                "resource_name": data["resource_name"],
                 "resource_id": data['resource_id'],
                 "quantity": data['quantity'],
                 "provider_id": data['provider_id'],
                 "hospital_id": data['hospital_id']
             })
         except:
+            traceback.print_exc()
             return {"message": "There was an error creating the shipment"}, 500
 
         return {"message": "shipment created"}, 201
@@ -314,4 +315,4 @@ class ShipmentList(Resource):
             except:
                 return {"message": "There was an error looking up the resource request"}, 500
 
-        return {"supplies": json_util._json_convert(shipments)}, 200
+        return {"shipments": json_util._json_convert(shipments)}, 200
