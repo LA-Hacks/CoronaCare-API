@@ -69,6 +69,7 @@ class ResourceRequestRegister(Resource):
                 "standard": data["standard"],
                 "hospital_id": str(hospital['_id']),
                 "quantity": data['quantity']
+                "urgency": data['urgency']
             })
         except:
             return {"message": "There was an error creating the resource request"}, 500
