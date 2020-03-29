@@ -126,7 +126,12 @@ class UserLogin(Resource):
             )
             # create new refresh token that binds to the identity of the user (users.get("_id"))
             refresh_token = create_refresh_token(str(user.get("_id")))
-            return {"access_token": access_token, "refresh_token": refresh_token}, 200
+
+            _type = "provider"
+            if user.get("hospital_id"):
+                _type = "hospital"
+
+            return {"access_token": access_token, "type": _type, "refresh_token": refresh_token}, 200
 
         return {"message": "Invalid Credentials!"}, 401
 
